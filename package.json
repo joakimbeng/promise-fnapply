@@ -1,0 +1,31 @@
+{
+  "name": "promise-fnapply",
+  "version": "0.1.0",
+  "description": "A Function.apply that can deal with promise arguments",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo",
+    "pretest": "npm run -s lint",
+    "test": "ava"
+  },
+  "keywords": [
+    "promise",
+    "apply",
+    "function",
+    "functional"
+  ],
+  "author": {
+    "name": "Joakim Carlstein",
+    "email": "joakim@klei.se"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.1.0",
+    "sliced": "^1.0.1",
+    "xo": "^0.8.0"
+  },
+  "repository": "joakimbeng/promise-fnapply",
+  "dependencies": {
+    "promise-all": "^1.0.0"
+  }
+}
