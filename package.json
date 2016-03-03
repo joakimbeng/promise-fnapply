@@ -1,6 +1,6 @@
 {
   "name": "promise-fnapply",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Function.apply that can deal with promise arguments",
   "main": "src/index.js",
   "scripts": {
