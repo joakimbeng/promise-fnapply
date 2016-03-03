@@ -1,7 +1,7 @@
 'use strict';
 var all = require('promise-all');
 
-module.exports = function apply(fn, args) {
+module.exports = function apply(fn, args, that) {
 	if (!Array.isArray(args)) {
 		return Promise.reject(new TypeError('`args` must be an array!'));
 	}
@@ -11,7 +11,7 @@ module.exports = function apply(fn, args) {
 				return Promise.reject(new TypeError('`fn` must be a function!'));
 			}
 			return all(args).then(function (values) {
-				return fn.apply(undefined, values);
+				return fn.apply(that, values);
 			});
 		});
 };

@@ -72,3 +72,18 @@ test('function to apply is a promise', t => {
 			t.is(actual, expected);
 		});
 });
+
+test('setting context', t => {
+	t.plan(1);
+	const obj = {
+		greeting: 'Hello ',
+		greet: Promise.resolve(function (name) {
+			return this.greeting + name;
+		})
+	};
+	return apply(obj.greet, ['world'], obj)
+		.then(actual => {
+			const expected = 'Hello world';
+			t.is(actual, expected);
+		});
+});

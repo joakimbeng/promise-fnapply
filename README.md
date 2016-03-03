@@ -31,12 +31,13 @@ apply(greet, [Promise.resolve('world')])
 
 ## API
 
-### `apply(fn, promises)`
+### `apply(fn, promises, thisArg)`
 
 | Name | Type | Description |
 |------|------|-------------|
-| `fn` | `Function|Promise { [Function] }`| The function, or a promise resolving to a function, to apply with the resolved promises as argument array |
-| `promises` | `Array { Promise }`| The arguments array to pass to `fn` when they all are resolved |
+| `fn` | `Function|Promise<Function>`| The function, or a promise resolving to a function, to apply with the resolved promises as argument array |
+| `promises` | `Array<Promise>`| The arguments array to pass to `fn` when they all are resolved |
+| `thisArg` | `Any` | The value to be passed as `this` when calling `fn` |
 
 Returns: `Promise`, which resolves to the result of applying `fn` with the resolved values of `promises`.
 
