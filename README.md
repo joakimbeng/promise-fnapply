@@ -52,7 +52,7 @@ Returns: `Promise`, which resolves to the result of applying `fn` with the resol
 
 ## License
 
-MIT © Joakim Carlstein
+MIT © [Joakim Carlstein](http://joakim.beng.se)
 
 [npm-url]: https://npmjs.org/package/promise-fnapply
 [npm-image]: https://badge.fury.io/js/promise-fnapply.svg
