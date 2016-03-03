@@ -1,6 +1,6 @@
 # promise-fnapply
 
-[![Build status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url] [![js-xo-style][codestyle-image]][codestyle-url]
+[![Build status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url] [![XO code style][codestyle-image]][codestyle-url]
 
 > A Function.apply that can deal with promise arguments
 
@@ -59,4 +59,4 @@ MIT © Joakim Carlstein
 [travis-url]: https://travis-ci.org/joakimbeng/promise-fnapply
 [travis-image]: https://travis-ci.org/joakimbeng/promise-fnapply.svg?branch=master
 [codestyle-url]: https://github.com/sindresorhus/xo
-[codestyle-image]: https://img.shields.io/badge/code%20style-xo-brightgreen.svg?style=flat
+[codestyle-image]: https://img.shields.io/badge/code%20style-XO-5ed9c7.svg?style=flat
