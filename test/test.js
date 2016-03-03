@@ -1,81 +1,74 @@
 'use strict';
-var test = require('ava');
-var sliced = require('sliced');
-var apply = require('../src');
+const test = require('ava');
+const apply = require('../src');
 
-test('no arguments', function (assert) {
-	assert.plan(1);
+test('no arguments', t => {
+	t.plan(1);
 	function greet(val) {
-		return 'hello ' + val;
+		return `hello ${val}`;
 	}
 	return apply(greet)
-		.catch(function (err) {
-			var actual = err.message;
-			var expected = '`args` must be an array!';
-			assert.is(actual, expected);
+		.catch(err => {
+			const actual = err.message;
+			const expected = '`args` must be an array!';
+			t.is(actual, expected);
 		});
 });
 
-test('no function', function (assert) {
-	assert.plan(1);
+test('no function', t => {
+	t.plan(1);
 	return apply('hello', [])
-		.catch(function (err) {
-			var actual = err.message;
-			var expected = '`fn` must be a function!';
-			assert.is(actual, expected);
+		.catch(err => {
+			const actual = err.message;
+			const expected = '`fn` must be a function!';
+			t.is(actual, expected);
 		});
 });
 
-test('one argument', function (assert) {
-	assert.plan(1);
+test('one argument', t => {
+	t.plan(1);
 	function greet(val) {
-		return 'hello ' + val;
+		return `hello ${val}`;
 	}
 	return apply(greet, [Promise.resolve('world')])
-		.then(function (actual) {
-			var expected = 'hello world';
-			assert.is(actual, expected);
+		.then(actual => {
+			const expected = 'hello world';
+			t.is(actual, expected);
 		});
 });
 
-test('multiple arguments', function (assert) {
-	assert.plan(1);
+test('multiple arguments', t => {
+	t.plan(1);
 	function join(sep) {
-		return function () {
-			return sliced(arguments).join(sep);
-		};
+		return (...args) => args.join(sep);
 	}
 	return apply(join(' '), [Promise.resolve('hello'), Promise.resolve('world')])
-		.then(function (actual) {
-			var expected = 'hello world';
-			assert.is(actual, expected);
+		.then(actual => {
+			const expected = 'hello world';
+			t.is(actual, expected);
 		});
 });
 
-test('non-promise values', function (assert) {
-	assert.plan(1);
+test('non-promise values', t => {
+	t.plan(1);
 	function join(sep) {
-		return function () {
-			return sliced(arguments).join(sep);
-		};
+		return (...args) => args.join(sep);
 	}
 	return apply(join(' '), ['hello', 'world'])
-		.then(function (actual) {
-			var expected = 'hello world';
-			assert.is(actual, expected);
+		.then(actual => {
+			const expected = 'hello world';
+			t.is(actual, expected);
 		});
 });
 
-test('function to apply is a promise', function (assert) {
-	assert.plan(1);
+test('function to apply is a promise', t => {
+	t.plan(1);
 	function join(sep) {
-		return Promise.resolve(function () {
-			return sliced(arguments).join(sep);
-		});
+		return Promise.resolve((...args) => args.join(sep));
 	}
 	return apply(join(' '), ['hello', 'world'])
-		.then(function (actual) {
-			var expected = 'hello world';
-			assert.is(actual, expected);
+		.then(actual => {
+			const expected = 'hello world';
+			t.is(actual, expected);
 		});
 });

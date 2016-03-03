@@ -17,14 +17,14 @@ npm install --save promise-fnapply
 ### Module usage
 
 ```javascript
-var apply = require('promise-fnapply');
+const apply = require('promise-fnapply');
 
 function greet(val) {
-  return 'hello ' + val;
+  return `hello ${val}`;
 }
 
 apply(greet, [Promise.resolve('world')])
-  .then(function (val) {
+  .then(val => {
     // val === 'hello world'
   });
 ```
